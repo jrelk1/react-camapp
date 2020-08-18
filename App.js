@@ -44,7 +44,8 @@ export default class App extends React.Component {
   takePicture = async () => {
     if (this.camera) {
       let photo = await this.camera.takePictureAsync();
-
+      console.log("photo taken")
+      console.log(photo.uri)
     }
   }
 
@@ -65,7 +66,7 @@ export default class App extends React.Component {
       return (
           <View style={{ flex: 1 }}>
             <Camera style={{ flex: 1 }} type={this.state.cameraType}  ref={ref => {this.camera = ref}}>
-              <View style={{flex:1, flexDirection:"row",justifyContent:"space-between",margin:30}}>
+              <View style={{flex:1, flexDirection:"row",justifyContent:"space-around",margin:30}}>
                 <TouchableOpacity
                   style={{
                     alignSelf: 'flex-end',
@@ -88,19 +89,6 @@ export default class App extends React.Component {
                   >
                   <FontAwesome
                       name="camera"
-                      style={{ color: "#fff", fontSize: 40}}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{
-                    alignSelf: 'flex-end',
-                    alignItems: 'center',
-                    backgroundColor: 'transparent',
-                  }}
-                  onPress={()=>this.handleCameraType()}
-                  >
-                  <MaterialCommunityIcons
-                      name="camera-switch"
                       style={{ color: "#fff", fontSize: 40}}
                   />
                 </TouchableOpacity>
